@@ -1,21 +1,23 @@
-const cloudinary = require("cloudinary").v2;
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
-
-cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.SECRET_API_KEY, // Corrected typo
-});
-
-const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
-    params: {
-        folder: 'wonderlust_Dev',
-        allowedFormats: ["jpg", "png", "jpeg", "webp"], // Corrected typo
-    },
-});
+const path = require('path');
 
 module.exports = {
-    cloudinary,
-    storage,
+  entry: './src/index.js', // Adjust the entry point as per your project structure
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
+    ]
+  }
 };
