@@ -1,0 +1,73 @@
+<% layout('/layouts/boilerplate.ejs') %>
+
+    <div class="container mx-auto px-5  md:mt-0 lg:mt-0 xl:mt-0 mt-32">
+        <div class="md:flex lg:flex justify-between hidden xl:flex  items-center mb-8 mt-4">
+            <div class="flex flex-col text-sm hover:bg-gray-200 cursor-pointer py-2 px-4 rounded-md items-center">
+                <i class="fa-solid fa-fire"></i>
+                <p class="text-gray-700 text-sm">Trending</p>
+            </div>
+            <div class="flex flex-col hover:bg-gray-200 cursor-pointer py-2 px-4 rounded-md items-center">
+                <i class="fa-solid fa-person-shelter"></i>
+                <p class="text-gray-700 text-sm">Rooms</p>
+            </div>
+            <div class="flex flex-col hover:bg-gray-200 cursor-pointer py-2 px-4 rounded-md items-center">
+                <i class="fa-solid fa-mountain-city"></i>
+                <p class="text-gray-700 text-sm">Iconic Cities</p>
+            </div>
+            <div class="flex flex-col hover:bg-gray-200 cursor-pointer py-2 px-4 rounded-md items-center">
+                <i class="fa-solid fa-mountain"></i>
+                <p class="text-gray-700 text-sm">Mountain</p>
+            </div>
+            <div class="flex flex-col hover:bg-gray-200 cursor-pointer py-2 px-4 rounded-md items-center">
+                <i class="fa-brands fa-fort-awesome"></i>
+                <p class="text-gray-700 text-sm">Castles</p>
+            </div>
+            <div class="flex flex-col hover:bg-gray-200 cursor-pointer py-2 px-4 rounded-md items-center">
+                <i class="fa-solid fa-person-swimming"></i>
+                <p class="text-gray-700 text-sm">Amazing Pools</p>
+            </div>
+            <div class="flex flex-col hover:bg-gray-200 cursor-pointer py-2 px-4 rounded-md items-center">
+                <i class="fa-solid fa-campground"></i>
+                <p class="text-gray-700 text-sm">Camping</p>
+            </div>
+            <div class="flex items-center flex-col hover:bg-gray-200 cursor-pointer py-2 px-4 rounded-md">
+                <i class="fa-solid fa-tractor"></i>
+                <p class="text-gray-700 text-sm">Farms</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <% for (let list of allListings) { %>
+                <a href="/listings/<%= list._id %>"
+                    class="no-underline transform hover:scale-105 transition-transform duration-300">
+                    <div
+                        class="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+                        <div class="relative">
+                            <img class="w-full h-48 object-cover rounded-t-xl transition-transform duration-300 ease-in-out hover:scale-110"
+                                src="<%= list.image.url %>" alt="Card image cap">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-75 rounded-t-xl">
+                            </div>
+                            <h5 class="absolute bottom-0 left-0 m-4 text-lg font-bold text-white">
+                                <%= list.title %>
+                            </h5>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-gray-700 mb-2 line-clamp-2">
+                                <%= list.description %>
+                            </p>
+                            <div class="">
+                                <p class="text-gray-800 font-semibold">
+                                    $<%= list.price %>
+                                </p>
+                                <br>
+                                <p class="text-gray-600 text-sm">
+                                    <%= list.location %>, <br>
+                                        <%= list.country %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <% } %>
+        </div>
+    </div>
