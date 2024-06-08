@@ -1,10 +1,10 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js', // Adjust the entry point as per your project structure
+  entry: 'app.js', // Adjust the entry point as per your project structure
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'init')
   },
   module: {
     rules: [
