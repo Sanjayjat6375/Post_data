@@ -4,7 +4,7 @@ module.exports = {
   entry: 'app.js', // Adjust the entry point as per your project structure
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'init')
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
